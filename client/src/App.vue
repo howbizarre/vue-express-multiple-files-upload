@@ -1,11 +1,16 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const selectedImages = ref<FileList | null>(null);
+const selectedImages = ref<FileList>();
 
+/**
+ * Handles the change event of the file input element.
+ * Updates the selectedImages value with the selected files.
+ * 
+ * @param {Event} event - The change event object.
+ */
 const handleFileChange = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  
   if (target.files) selectedImages.value = target.files;
 };
 
@@ -13,8 +18,8 @@ const submitImages = async () => {
   if (selectedImages.value) {
     const formData = new FormData();
 
-    for (let i = 0; i < selectedImages.value.length; i++) {
-      formData.append('images', selectedImages.value[i]);
+    for (const file of selectedImages.value) {
+      formData.append('images', file);
     }
 
     try {
@@ -27,11 +32,10 @@ const submitImages = async () => {
         const data = await response.json();
         console.log('Hip, hip...', data);
       } else {
-        throw new Error(response.statusText);
+        throw new Error('Failed to upload images: ' + response.statusText);
       }
-
     } catch (error) {
-      console.error('Ooops, wft...', error);
+      console.error('Error while uploading images:', error);
     }
   }
 };
