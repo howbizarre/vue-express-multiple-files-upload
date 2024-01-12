@@ -4,9 +4,11 @@ This is a straightforward way to use Vue 3 as front-end and Express as the back-
 
 The project depends on [multer](https://www.npmjs.com/package/multer) to handle the upload.
 
-You should have some experience with Vue 3, Express, and Node 'cos this is not a tutorial.
+The upload process accepts only .jpg and .png files but you can change it if you want.
 
-Open the project folder in VS Code. Split the terminal by two and run the following commands in each terminal:
+You should have some experience with Vue 3, Express, and Node 'cos this is not a beginner's tutorial.
+
+Open the project root folder in VS Code. Split the terminal by two and run the following commands in each terminal:
 
 ```bash
 npm run server
