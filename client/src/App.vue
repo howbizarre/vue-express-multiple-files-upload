@@ -14,7 +14,14 @@ const handleFileChange = (event: Event) => {
   if (target.files) selectedImages.value = target.files;
 };
 
-const submitImages = async () => {
+/**
+ * Submits the selected images to the server for upload.
+ * 
+ * @async
+ * @function submitImages
+ * @returns {Promise<void>}
+ */
+const submitImages = async (): Promise<void> => {
   if (selectedImages.value) {
     const formData = new FormData();
 
