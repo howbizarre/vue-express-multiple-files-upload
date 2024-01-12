@@ -32,7 +32,7 @@ const submitImages = async () => {
         const data = await response.json();
         console.log('Hip, hip...', data);
       } else {
-        throw new Error('Failed to upload images: ' + response.statusText);
+        throw new Error(response.statusText);
       }
     } catch (error) {
       console.error('Error while uploading images:', error);

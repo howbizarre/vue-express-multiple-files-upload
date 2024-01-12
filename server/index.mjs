@@ -9,8 +9,12 @@ const TARGET = "uploads/";
 const MAX_FILE = 10;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
+/**
+ * The destination folder is hardcoded, but you can pass it from the client
+ * The easy way is to get the 'file.fieldname' and then create a folder with it
+ */
 const destination = (req, file, cb) => cb(null, TARGET);
-const filename = (req, file, cb) => cb(null, file.fieldname + "-" + Date.now() + "." + file.originalname.split(".").pop());
+const filename = (req, file, cb) => cb(null, file.originalname); // You can change the name of output file here
 
 const storage = multer.diskStorage({ destination, filename });
 
